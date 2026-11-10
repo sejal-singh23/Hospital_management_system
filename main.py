@@ -100,6 +100,15 @@ def alter_patient_details():
     conn.commit()
     print("patient details are updated successfully")
 
+def delete_patient():
+
+    p_id = int(input("enter patient id to be deleted : "))
+
+    cur.execute(f"DELETE FROM Patient where id = {p_id}")
+
+    conn.commit()
+    print("Patient is removed successfully")
+
 while True:
     print("Welcome to my Hospital")
     print("0 - exit")
@@ -107,8 +116,9 @@ while True:
     print("02 - alter doctor's details")
     print("03 - Delete doctor name")
     print("04 - Display doctor detail")
-    print("05 - Assign doctor to patient")
+    print("05 - Add patient detail and Assign doctor to patient")
     print("06 - Update patient detail")
+    print("07 - Remove patient")
 
     choice = int(input("Select one of these : "))
 
@@ -126,5 +136,7 @@ while True:
         add_patient()
     elif choice == 6:
         alter_patient_details()
+    elif choice == 7:
+        delete_patient()
     else :
         print("invalid choice")
